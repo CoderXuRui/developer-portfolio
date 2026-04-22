@@ -59,7 +59,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/resume"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-foreground rounded-lg font-medium border border-border hover:border-primary transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-card text-foreground rounded-lg font-medium border border-border hover:border-primary transition-colors"
                 >
                   <Download className="w-4 h-4" />
                   查看简历
@@ -78,10 +78,10 @@ export default function Home() {
                 </div>
 
                 {/* Floating badges */}
-                <div className="absolute -top-4 -right-4 px-4 py-2 bg-white rounded-lg shadow-lg animate-float">
+                <div className="absolute -top-4 -right-4 px-4 py-2 bg-card rounded-lg shadow-lg animate-float">
                   <span className="text-sm font-medium text-foreground">后端开发</span>
                 </div>
-                <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-white rounded-lg shadow-lg animate-float" style={{ animationDelay: "0.5s" }}>
+                <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-card rounded-lg shadow-lg animate-float" style={{ animationDelay: "0.5s" }}>
                   <span className="text-sm font-medium text-foreground">Java</span>
                 </div>
               </div>
@@ -141,8 +141,8 @@ export default function Home() {
             <div className="order-1 md:order-2 flex justify-center animate-fade-in-up">
               <div className="relative">
                 <div className="w-64 h-64 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl transform rotate-3" />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl transform -rotate-3 flex items-center justify-center">
-                  <span className="text-8xl text-white font-display font-bold opacity-20">山</span>
+                <div className="absolute inset-0 bg-white rounded-2xl transform -rotate-3 flex items-center justify-center p-8">
+                  <Image src="/山东大学-logo.png" alt="山东大学" width={200} height={200} className="object-contain" />
                 </div>
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function Home() {
 
           <div className="space-y-8 max-w-3xl mx-auto">
             {[
-              { company: "阿里国际电商支付部门", role: "后端开发工程师", period: "2025.04 - 2025.09", desc: "负责支付链路架构升级与稳定性治理和azada支付链路AIOps与智能诊断Agent平台开发" },
+              { company: "阿里国际电商支付部门", role: "后端开发工程师", period: "2025.04 - 2025.09", desc: "负责Miravia支付链路架构升级与稳定性治理和Lazada支付链路AIOps与智能诊断Agent平台开发" },
               // { company: "实习单位", role: "后端开发实习生", period: "2022 - 2023", desc: "参与企业级项目开发，学习微服务架构与团队协作" },
             ].map((item, index) => (
               <div key={index} className="flex gap-6 animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
@@ -174,7 +174,7 @@ export default function Home() {
                   {index < 1 && <div className="w-0.5 h-full bg-border" />}
                 </div>
                 <div className="flex-1 pb-8">
-                  <div className="bg-white rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
+                  <div className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="font-display font-semibold text-lg">{item.company}</h3>
                       <span className="text-sm text-foreground-muted">{item.period}</span>
@@ -219,7 +219,7 @@ export default function Home() {
             ].map((project, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-xl p-6 shadow-sm border border-border hover:border-primary hover:shadow-lg transition-all animate-fade-in-up"
+                className="group bg-card rounded-xl p-6 shadow-sm border border-border hover:border-primary hover:shadow-lg transition-all animate-fade-in-up"
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -241,7 +241,7 @@ export default function Home() {
           <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-foreground rounded-lg font-medium border border-border hover:border-primary transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-card text-foreground rounded-lg font-medium border border-border hover:border-primary transition-colors"
             >
               查看全部项目
               <ArrowRight className="w-4 h-4" />
@@ -262,14 +262,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg font-medium hover:bg-background-alt transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-card text-primary rounded-lg font-medium hover:bg-background-alt transition-colors"
             >
               联系我
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/20"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-card/10 text-white rounded-lg font-medium hover:bg-card/20 transition-colors border border-white/20"
             >
               阅读博客
             </Link>

@@ -26,7 +26,7 @@ export default function ResumePage() {
       {/* Resume Actions */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-border animate-fade-in-up">
+          <div className="bg-card rounded-2xl p-8 shadow-sm border border-border animate-fade-in-up">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               {/* Preview */}
               <a
@@ -43,7 +43,7 @@ export default function ResumePage() {
               <a
                 href="/山东大学-张栩睿.pdf"
                 download="张栩睿-简历.pdf"
-                className="flex items-center gap-3 px-6 py-4 bg-white text-foreground rounded-xl border-2 border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors"
+                className="flex items-center gap-3 px-6 py-4 bg-card text-foreground rounded-xl border-2 border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors"
               >
                 <Download className="w-5 h-5" />
                 <span>下载简历</span>
@@ -82,7 +82,7 @@ export default function ResumePage() {
             ].map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-sm border border-border text-center"
+                className="bg-card rounded-xl p-6 shadow-sm border border-border text-center"
               >
                 <span className="text-foreground-muted text-sm">{item.label}</span>
                 <p className="font-display font-semibold text-lg mt-1">{item.value}</p>

@@ -63,7 +63,7 @@ export default function ContactPage() {
                   target={method.href?.startsWith("http") ? "_blank" : undefined}
                   rel={method.href?.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={`flex items-center gap-4 p-4 rounded-xl transition-all hover:shadow-md ${
-                    method.href ? "bg-white border border-border hover:border-primary cursor-pointer" : "bg-background-alt cursor-default"
+                    method.href ? "bg-card border border-border hover:border-primary cursor-pointer" : "bg-background-alt cursor-default"
                   }`}
                 >
                   <div className={`w-12 h-12 rounded-xl ${method.color} flex items-center justify-center`}>
@@ -95,7 +95,7 @@ export default function ContactPage() {
                 href={social.href || "#"}
                 target={social.href?.startsWith("http") ? "_blank" : undefined}
                 rel={social.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`w-12 h-12 rounded-full bg-white border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors ${!social.href ? "cursor-default" : ""}`}
+                className={`w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-colors ${!social.href ? "cursor-default" : ""}`}
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />

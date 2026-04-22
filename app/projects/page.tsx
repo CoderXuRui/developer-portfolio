@@ -70,7 +70,7 @@ export default function ProjectsPage() {
             {featuredProjects.map((project, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary transition-all duration-300 animate-fade-in-up"
+                className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary transition-all duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-3">
@@ -156,7 +156,7 @@ export default function ProjectsPage() {
             {otherProjects.map((project, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-xl p-6 shadow-sm border border-border hover:shadow-lg hover:border-primary transition-all animate-fade-in-up"
+                className="group bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-lg hover:border-primary transition-all animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-4">

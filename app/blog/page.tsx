@@ -78,7 +78,7 @@ export default function BlogPage() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary transition-all duration-300 animate-fade-in-up"
+                className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary transition-all duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.05}s` }}
               >
                 {/* Image placeholder */}
@@ -139,7 +139,7 @@ export default function BlogPage() {
             <input
               type="email"
               placeholder="your@email.com"
-              className="flex-1 px-4 py-3 rounded-lg border border-border bg-white focus:outline-none focus:border-primary transition-colors"
+              className="flex-1 px-4 py-3 rounded-lg border border-border bg-card focus:outline-none focus:border-primary transition-colors"
             />
             <button className="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
               订阅

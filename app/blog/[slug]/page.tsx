@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <section className="py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <article className="prose prose-lg max-w-none animate-fade-in-up">
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-border">
+            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
               <div dangerouslySetInnerHTML={{
                 __html: post.content
                   .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold mt-8 mb-4">$1</h2>')
@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="flex items-center justify-between">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-lg font-medium border border-border hover:border-primary transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-card rounded-lg font-medium border border-border hover:border-primary transition-colors"
             >
               返回列表
             </Link>

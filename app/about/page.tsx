@@ -46,7 +46,7 @@ export default function AboutPage() {
             {education.map((edu, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow animate-fade-in-up"
+                className="bg-card rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
@@ -87,7 +87,7 @@ export default function AboutPage() {
             ].map((group, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow animate-fade-in-up"
+                className="bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.05}s` }}
               >
                 <h3 className="font-display font-semibold text-lg mb-4 text-primary">{group.category}</h3>
@@ -121,7 +121,7 @@ export default function AboutPage() {
             {achievements.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 bg-white rounded-xl p-5 shadow-sm border border-border animate-fade-in-up"
+                className="flex items-center gap-4 bg-card rounded-xl p-5 shadow-sm border border-border animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 <div className="w-3 h-3 rounded-full bg-warning" />
@@ -150,7 +150,7 @@ export default function AboutPage() {
                   <div className="absolute left-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
                     {item.year.slice(-2)}
                   </div>
-                  <div className="bg-white rounded-xl p-4 shadow-sm border border-border">
+                  <div className="bg-card rounded-xl p-4 shadow-sm border border-border">
                     <span className="text-sm text-foreground-muted">{item.year}</span>
                     <p className="font-medium mt-1">{item.event}</p>
                   </div>

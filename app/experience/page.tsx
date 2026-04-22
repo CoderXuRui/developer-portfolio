@@ -1,4 +1,5 @@
-import { Briefcase, Calendar, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Calendar, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const experiences = [
@@ -19,19 +20,6 @@ const experiences = [
     ],
     techStack: ["Java", "Spring Boot", "MySQL", "Redis", "Spring AI"],
   },
-  // {
-  //   company: "山东大学实验室",
-  //   role: "后端开发实习生",
-  //   period: "2022.06 - 2023.05",
-  //   location: "济南",
-  //   responsibilities: [
-  //     "参与科研项目后端开发",
-  //     "负责数据处理与分析模块实现",
-  //     "学习并应用微服务架构理念",
-  //     "参与技术文档编写与代码 review",
-  //   ],
-  //   techStack: ["Java", "Spring MVC", "MySQL", "Python"],
-  // },
 ];
 
 export default function ExperiencePage() {
@@ -54,38 +42,37 @@ export default function ExperiencePage() {
       {/* Experience List */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="space-y-8">
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className="relative mb-12 animate-fade-in-up"
-                style={{ animationDelay: `${0.1 + index * 0.15}s` }}
+                className="bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                {/* Timeline indicator */}
-                <div className="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center">
-                    <Briefcase className="w-5 h-5" />
+                <div className="grid grid-cols-1 lg:grid-cols-4">
+                  {/* Visual */}
+                  <div className="bg-gradient-to-br from-primary/20 to-accent/20 p-8 flex flex-col items-center justify-center min-h-64">
+                    <div className="w-24 h-24 rounded-2xl bg-white flex items-center justify-center mb-4 p-2">
+                      <Image src="/alibaba.png" alt="阿里巴巴" width={80} height={80} className="object-contain" />
+                    </div>
+                    <div className="text-center">
+                      <div className="flex items-center gap-2 text-sm text-foreground-muted justify-center">
+                        <Calendar className="w-4 h-4" />
+                        {exp.period}
+                      </div>
+                      <span className="inline-block mt-2 px-3 py-1 bg-background-alt rounded text-sm">
+                        {exp.location}
+                      </span>
+                    </div>
                   </div>
-                  {index < experiences.length - 1 && (
-                    <div className="w-0.5 h-full bg-border mt-4" />
-                  )}
-                </div>
 
-                {/* Content card */}
-                <div className="ml-16 sm:ml-20 sm:mr-0 sm:max-w-[calc(50%-2rem)]">
-                  <div className="bg-white rounded-2xl p-8 shadow-sm border border-border hover:shadow-lg transition-shadow">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-                      <div>
-                        <h3 className="text-xl font-display font-semibold text-foreground">{exp.company}</h3>
-                        <p className="text-primary font-medium">{exp.role}</p>
-                      </div>
-                      <div className="flex items-center gap-4 text-sm text-foreground-muted">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {exp.period}
-                        </span>
-                        <span className="px-2 py-1 bg-background-alt rounded">{exp.location}</span>
-                      </div>
+                  {/* Content */}
+                  <div className="lg:col-span-3 p-8">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-display font-semibold text-foreground mb-1">
+                        {exp.company}
+                      </h3>
+                      <p className="text-primary font-medium">{exp.role}</p>
                     </div>
 
                     <ul className="space-y-2 mb-6">
@@ -101,7 +88,7 @@ export default function ExperiencePage() {
                       {exp.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-lg bg-primary/10 text-primary text-xs font-mono"
+                          className="px-3 py-1.5 rounded-lg bg-background-alt text-foreground-muted text-xs font-mono hover:bg-primary/10 hover:text-primary transition-colors"
                         >
                           {tech}
                         </span>
