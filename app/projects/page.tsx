@@ -30,12 +30,12 @@ const projects = [
     featured: false,
   },
   {
-    name: "企业内部知识库系统",
-    description: "基于文档智能检索的知识库系统，支持全文搜索、分类管理、权限控制等功能。",
-    tech: ["Java", "Spring Boot", "Elasticsearch", "Vue.js"],
-    highlights: ["智能全文检索", "权限细粒度控制", "Markdown 编辑"],
-    link: "#",
-    github: "#",
+    name: "墨砚",
+    description: "一个优雅的本地 Markdown 笔记应用，提供沉浸式双栏编辑体验。",
+    tech: ["React 19", "TypeScript"],
+    highlights: ["导入/导出功能", "三主题切换、专注模式", "Markdown 编辑"],
+    link: "http://117.72.121.43:1026/",
+    github: "https://github.com/CoderXuRui/moyan-md",
     featured: false,
   },
 ];
