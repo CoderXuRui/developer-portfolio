@@ -1,8 +1,9 @@
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+import { localizedHref } from "@/lib/i18n";
 
-// 模拟文章数据
 const posts: Record<string, {
   title: string;
   date: string;
@@ -88,6 +89,7 @@ interface PageProps {
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = posts[slug];
+  const t = await getTranslations("BlogPostPage");
 
   if (!post) {
     notFound();
@@ -99,11 +101,11 @@ export default async function BlogPostPage({ params }: PageProps) {
       <section className="pt-32 pb-8 bg-gradient-to-b from-background-alt to-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
-            href="/blog"
+            href={await localizedHref("/blog")}
             className="inline-flex items-center gap-2 text-foreground-muted hover:text-primary transition-colors mb-8 animate-fade-in"
           >
             <ArrowLeft className="w-4 h-4" />
-            返回博客列表
+            {t("backToList")}
           </Link>
 
           <div className="animate-fade-in-up">
@@ -113,6 +115,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   key={tag}
                   className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
                 >
+                  <Tag className="w-3 h-3 inline mr-1" />
                   {tag}
                 </span>
               ))}
@@ -159,10 +162,10 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link
-              href="/blog"
+              href={await localizedHref("/blog")}
               className="inline-flex items-center gap-2 px-6 py-3 bg-card rounded-lg font-medium border border-border hover:border-primary transition-colors"
             >
-              返回列表
+              {t("backToListBtn")}
             </Link>
           </div>
         </div>

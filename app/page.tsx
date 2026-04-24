@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { localizedHref } from "@/lib/i18n";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  const t = await getTranslations("HomePage");
+  const prefix = (await localizedHref("/")).slice(0, -1); // "/en" or ""
+
   return (
     <>
       {/* Hero Section */}
@@ -18,27 +23,26 @@ export default function Home() {
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium animate-fade-in">
                 <Sparkles className="w-4 h-4" />
-                欢迎来到我的技术空间
+                {t("welcomeBadge")}
               </div>
 
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold leading-tight animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-                你好，我是
-                <span className="text-gradient block mt-2">小满</span>
+                {t("greeting")}
+                <span className="text-gradient block mt-2">{t("name")}</span>
               </h1>
 
               <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-                后端开发工程师
-                <span className="text-primary font-semibold"> · Java 技术栈</span>
+                {t("role")}
+                <span className="text-primary font-semibold">{t("techStack")}</span>
               </p>
 
               <p className="text-base text-foreground-muted leading-relaxed max-w-lg animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-                热爱技术，专注于构建高效、可靠的后端系统。
-                喜欢探索新技术，追求代码艺术。
+                {t("bio")}
               </p>
 
               {/* Tech Tags */}
               <div className="flex flex-wrap gap-2 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-                {["Java", "Spring Boot", "Spring AI", "MySQL", "Redis",  "Docker"].map((tag) => (
+                {["Java", "Spring Boot", "Spring AI", "MySQL", "Redis", "Docker"].map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1 rounded-full bg-background-alt text-sm font-medium text-foreground-muted border border-border hover:border-primary hover:text-primary transition-colors cursor-default"
@@ -51,18 +55,18 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
                 <Link
-                  href="/about"
+                  href={await localizedHref("/about")}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors shadow-lg shadow-primary/25"
                 >
-                  了解更多
+                  {t("learnMore")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/resume"
+                  href={await localizedHref("/resume")}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-card text-foreground rounded-lg font-medium border border-border hover:border-primary transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  查看简历
+                  {t("viewResume")}
                 </Link>
               </div>
             </div>
@@ -79,7 +83,7 @@ export default function Home() {
 
                 {/* Floating badges */}
                 <div className="absolute -top-4 -right-4 px-4 py-2 bg-card rounded-lg shadow-lg animate-float">
-                  <span className="text-sm font-medium text-foreground">后端开发</span>
+                  <span className="text-sm font-medium text-foreground">{t("role")}</span>
                 </div>
                 <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-card rounded-lg shadow-lg animate-float" style={{ animationDelay: "0.5s" }}>
                   <span className="text-sm font-medium text-foreground">Java</span>
@@ -103,12 +107,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <h2 className="text-3xl sm:text-4xl font-display font-bold mb-6 animate-fade-in-up">
-                关于
-                <span className="text-primary"> 我</span>
+                {t("aboutTitle")}
+                <span className="text-primary"> {t("aboutMe")}</span>
               </h2>
               <p className="text-foreground-muted leading-relaxed mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-                我是一名来自山东大学的后端开发工程师，专注于 Java 技术栈开发。
-                拥有扎实的计算机基础知识，热衷于解决复杂的工程问题。
+                {t("aboutDesc")}
               </p>
               <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
                 <div className="flex items-center gap-3">
@@ -116,8 +119,8 @@ export default function Home() {
                     <span className="text-primary font-bold">01</span>
                   </div>
                   <div>
-                    <h4 className="font-medium">教育背景</h4>
-                    <p className="text-sm text-foreground-muted">山东大学 · 计算机科学与技术</p>
+                    <h4 className="font-medium">{t("education")}</h4>
+                    <p className="text-sm text-foreground-muted">{t("educationDetail")}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -125,16 +128,16 @@ export default function Home() {
                     <span className="text-accent font-bold">02</span>
                   </div>
                   <div>
-                    <h4 className="font-medium">专业技能</h4>
-                    <p className="text-sm text-foreground-muted">Java / Spring Boot / 中间件 / 分布式系统</p>
+                    <h4 className="font-medium">{t("skills")}</h4>
+                    <p className="text-sm text-foreground-muted">{t("skillsDetail")}</p>
                   </div>
                 </div>
               </div>
               <Link
-                href="/about"
+                href={await localizedHref("/about")}
                 className="inline-flex items-center gap-2 mt-8 text-primary font-medium hover:gap-3 transition-all animate-fade-in-up" style={{ animationDelay: "0.3s" }}
               >
-                查看详细经历
+                {t("viewDetail")}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -155,18 +158,17 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4 animate-fade-in-up">
-              工作
-              <span className="text-gradient"> 经历</span>
+              {t("experienceTitle")}
+              <span className="text-gradient"> {t("experienceTitleHighlight")}</span>
             </h2>
             <p className="text-foreground-muted max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              从实际项目中积累经验，不断成长
+              {t("experienceDesc")}
             </p>
           </div>
 
           <div className="space-y-8 max-w-3xl mx-auto">
             {[
               { company: "阿里国际电商支付部门", role: "后端开发工程师", period: "2025.04 - 2025.09", desc: "负责Miravia支付链路架构升级与稳定性治理和Lazada支付链路AIOps与智能诊断Agent平台开发" },
-              // { company: "实习单位", role: "后端开发实习生", period: "2022 - 2023", desc: "参与企业级项目开发，学习微服务架构与团队协作" },
             ].map((item, index) => (
               <div key={index} className="flex gap-6 animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
                 <div className="flex flex-col items-center">
@@ -189,10 +191,10 @@ export default function Home() {
 
           <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
             <Link
-              href="/experience"
+              href={await localizedHref("/experience")}
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors"
             >
-              查看全部经历
+              {t("viewAllExp")}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -204,11 +206,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4 animate-fade-in-up">
-              项目
-              <span className="text-gradient"> 作品</span>
+              {t("projectsTitle")}
+              <span className="text-gradient"> {t("projectsTitleHighlight")}</span>
             </h2>
             <p className="text-foreground-muted max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              精选项目，展示技术能力与实践成果
+              {t("projectsDesc")}
             </p>
           </div>
 
@@ -230,8 +232,8 @@ export default function Home() {
                 </div>
                 <h3 className="font-display font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{project.name}</h3>
                 <p className="text-foreground-muted text-sm mb-4">{project.desc}</p>
-                <Link href="/projects" className="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                  查看详情
+                <Link href={`${prefix}/projects`} className="text-primary text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  {t("viewDetailLink")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -240,10 +242,10 @@ export default function Home() {
 
           <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
             <Link
-              href="/projects"
+              href={await localizedHref("/projects")}
               className="inline-flex items-center gap-2 px-6 py-3 bg-card text-foreground rounded-lg font-medium border border-border hover:border-primary transition-colors"
             >
-              查看全部项目
+              {t("viewAllProjects")}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -254,24 +256,24 @@ export default function Home() {
       <section className="py-24 bg-gradient-to-br from-primary to-accent text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-display font-bold mb-6 animate-fade-in-up">
-            准备好了开始合作？
+            {t("ctaTitle")}
           </h2>
           <p className="text-white/80 text-lg mb-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            无论是项目合作还是技术交流，我都非常期待与您联系
+            {t("ctaDesc")}
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <Link
-              href="/contact"
+              href={await localizedHref("/contact")}
               className="inline-flex items-center gap-2 px-6 py-3 bg-card text-primary rounded-lg font-medium hover:bg-background-alt transition-colors"
             >
-              联系我
+              {t("contactMe")}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/blog"
+              href={await localizedHref("/blog")}
               className="inline-flex items-center gap-2 px-6 py-3 bg-card/10 text-white rounded-lg font-medium hover:bg-card/20 transition-colors border border-white/20"
             >
-              阅读博客
+              {t("readBlog")}
             </Link>
           </div>
         </div>

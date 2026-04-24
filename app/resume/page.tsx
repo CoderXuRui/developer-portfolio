@@ -1,8 +1,19 @@
 "use client";
 
 import { Download, FileText, Eye, Printer } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+
+function useLocalizedHref(path: string) {
+  const locale = useLocale();
+  const prefix = locale === "zh" ? "" : "/en";
+  if (path === "/") return prefix || "/";
+  return `${prefix}${path}`;
+}
 
 export default function ResumePage() {
+  const t = useTranslations("ResumePage");
+  const contactHref = useLocalizedHref("/contact");
+
   const handlePrint = () => {
     window.print();
   };
@@ -14,10 +25,10 @@ export default function ResumePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-4xl sm:text-5xl font-display font-bold mb-4">
-              我的<span className="text-gradient"> 简历</span>
+              {t("title")}<span className="text-gradient"> {t("titleHighlight")}</span>
             </h1>
             <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              了解我的职业背景与专业能力
+              {t("subtitle")}
             </p>
           </div>
         </div>
@@ -36,7 +47,7 @@ export default function ResumePage() {
                 className="flex items-center gap-3 px-6 py-4 bg-primary text-white rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/25"
               >
                 <Eye className="w-5 h-5" />
-                <span className="font-medium">在线预览</span>
+                <span className="font-medium">{t("preview")}</span>
               </a>
 
               {/* Download */}
@@ -46,7 +57,7 @@ export default function ResumePage() {
                 className="flex items-center gap-3 px-6 py-4 bg-card text-foreground rounded-xl border-2 border-primary text-primary font-medium hover:bg-primary hover:text-white transition-colors"
               >
                 <Download className="w-5 h-5" />
-                <span>下载简历</span>
+                <span>{t("download")}</span>
               </a>
 
               {/* Print */}
@@ -55,7 +66,7 @@ export default function ResumePage() {
                 className="flex items-center gap-3 px-6 py-4 bg-background-alt text-foreground rounded-xl border border-border hover:border-primary transition-colors"
               >
                 <Printer className="w-5 h-5" />
-                <span className="font-medium">打印</span>
+                <span className="font-medium">{t("print")}</span>
               </button>
             </div>
 
@@ -63,10 +74,9 @@ export default function ResumePage() {
               <div className="flex items-start gap-4">
                 <FileText className="w-12 h-12 text-primary flex-shrink-0" />
                 <div>
-                  <h3 className="font-display font-semibold text-lg mb-2">山东大学-张栩睿.pdf</h3>
+                  <h3 className="font-display font-semibold text-lg mb-2">{t("fileName")}</h3>
                   <p className="text-foreground-muted text-sm">
-                    简历 PDF 文件，可直接下载或在线预览。
-                    如需更新简历，请替换 public 目录下的 PDF 文件。
+                    {t("fileDesc")}
                   </p>
                 </div>
               </div>
@@ -76,9 +86,9 @@ export default function ResumePage() {
           {/* Quick Info */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
             {[
-              { label: "姓名", value: "张栩睿" },
-              { label: "职位", value: "后端开发工程师" },
-              { label: "技术栈", value: "Java / Spring Boot" },
+              { label: t("name"), value: t("nameValue") },
+              { label: t("position"), value: t("positionValue") },
+              { label: t("stack"), value: t("stackValue") },
             ].map((item, index) => (
               <div
                 key={index}
@@ -96,17 +106,17 @@ export default function ResumePage() {
       <section className="py-16 bg-background-alt">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl font-display font-semibold mb-4 animate-fade-in-up">
-            对我的经历感兴趣？
+            {t("ctaTitle")}
           </h3>
           <p className="text-foreground-muted mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            欢迎联系我，了解更多关于我的信息
+            {t("ctaDesc")}
           </p>
           <a
-            href="/contact"
+            href={contactHref}
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors animate-fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
-            联系我
+            {t("contactMe")}
           </a>
         </div>
       </section>

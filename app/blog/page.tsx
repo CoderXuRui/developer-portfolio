@@ -1,7 +1,8 @@
 import { FileText, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { localizedHref } from "@/lib/i18n";
 
-// 模拟博客数据
 const posts = [
   {
     slug: "spring-boot-best-practices",
@@ -53,7 +54,10 @@ const posts = [
   },
 ];
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const t = await getTranslations("BlogPage");
+  const prefix = (await localizedHref("/")).slice(0, -1); // "/en" or ""
+
   return (
     <>
       {/* Hero Section */}
@@ -61,10 +65,11 @@ export default function BlogPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-4xl sm:text-5xl font-display font-bold mb-4">
-              技术<span className="text-gradient"> 博客</span>
+              {t("title")}
+              <span className="text-gradient"> {t("titleHighlight")}</span>
             </h1>
             <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              分享技术见解，记录成长历程
+              {t("subtitle")}
             </p>
           </div>
         </div>
@@ -77,7 +82,7 @@ export default function BlogPage() {
             {posts.map((post, index) => (
               <Link
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={`${prefix}/blog/${post.slug}`}
                 className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary transition-all duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${0.1 + index * 0.05}s` }}
               >
@@ -116,7 +121,7 @@ export default function BlogPage() {
                   </div>
 
                   <div className="flex items-center gap-2 text-primary text-sm font-medium">
-                    阅读全文
+                    {t("readFull")}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -130,19 +135,19 @@ export default function BlogPage() {
       <section className="py-16 bg-background-alt">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl font-display font-semibold mb-4 animate-fade-in-up">
-            订阅更新
+            {t("subscribeTitle")}
           </h3>
           <p className="text-foreground-muted mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            接收新文章通知，第一时间获取技术干货
+            {t("subscribeDesc")}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder={t("emailPlaceholder")}
               className="flex-1 px-4 py-3 rounded-lg border border-border bg-card focus:outline-none focus:border-primary transition-colors"
             />
             <button className="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors">
-              订阅
+              {t("subscribe")}
             </button>
           </div>
         </div>

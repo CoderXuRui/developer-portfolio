@@ -1,46 +1,48 @@
 import { FolderGit, ExternalLink, Link2, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 const projects = [
   {
-    name: "分布式任务调度系统",
-    description: "基于 Redis + Kafka 构建的高性能任务调度平台，支持分布式部署、任务分片、失败重试等功能。",
+    nameKey: "project1_name",
+    descKey: "project1_desc",
     tech: ["Java", "Spring Boot", "Redis", "Kafka", "Docker"],
-    highlights: ["支持 10万+ 并发任务", "可视化任务管理", "多节点集群部署"],
+    highlights: ["project1_highlight1", "project1_highlight2", "project1_highlight3"],
     link: "#",
     github: "#",
     featured: true,
   },
   {
-    name: "微服务电商系统",
-    description: "完整的电商后端解决方案，包含用户、商品、订单、支付等核心模块，采用 Spring Cloud 微服务架构。",
+    nameKey: "project2_name",
+    descKey: "project2_desc",
     tech: ["Spring Cloud", "MySQL", "Redis", "Nginx", "Docker"],
-    highlights: ["服务间通信", "分布式事务", "API 文档完善"],
+    highlights: ["project2_highlight1", "project2_highlight2", "project2_highlight3"],
     link: "#",
     github: "#",
     featured: true,
   },
   {
-    name: "数据采集分析平台",
-    description: "用于采集多源数据并进行清洗、分析的可视化平台，支持实时数据处理和自定义报表生成。",
+    nameKey: "project3_name",
+    descKey: "project3_desc",
     tech: ["Python", "Flask", "MySQL", "ECharts", "Kafka"],
-    highlights: ["多源数据接入", "实时数据处理", "可视化报表"],
+    highlights: ["project3_highlight1", "project3_highlight2", "project3_highlight3"],
     link: "#",
     github: "#",
     featured: false,
   },
   {
-    name: "墨砚",
-    description: "一个优雅的本地 Markdown 笔记应用，提供沉浸式双栏编辑体验。",
+    nameKey: "project4_name",
+    descKey: "project4_desc",
     tech: ["React 19", "TypeScript"],
-    highlights: ["导入/导出功能", "三主题切换、专注模式", "Markdown 编辑"],
+    highlights: ["project4_highlight1", "project4_highlight2", "project4_highlight3"],
     link: "http://117.72.121.43:1026/",
     github: "https://github.com/CoderXuRui/moyan-md",
     featured: false,
   },
 ];
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const t = await getTranslations("ProjectsPage");
   const featuredProjects = projects.filter((p) => p.featured);
   const otherProjects = projects.filter((p) => !p.featured);
 
@@ -51,10 +53,11 @@ export default function ProjectsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-4xl sm:text-5xl font-display font-bold mb-4">
-              项目<span className="text-gradient"> 作品</span>
+              {t("title")}
+              <span className="text-gradient"> {t("titleHighlight")}</span>
             </h1>
             <p className="text-foreground-muted text-lg max-w-2xl mx-auto">
-              精选项目，凝聚技术实践与创新
+              {t("subtitle")}
             </p>
           </div>
         </div>
@@ -64,7 +67,7 @@ export default function ProjectsPage() {
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-display font-bold mb-8 animate-fade-in-up">
-            <span className="text-primary">Featured</span> Projects
+            <span className="text-primary">{t("featuredTitle")}</span> {t("featuredSuffix")}
           </h2>
           <div className="space-y-8">
             {featuredProjects.map((project, index) => (
@@ -85,7 +88,7 @@ export default function ProjectsPage() {
                   <div className="lg:col-span-2 p-8">
                     <div className="flex items-start justify-between mb-4">
                       <h3 className="text-2xl font-display font-semibold group-hover:text-primary transition-colors">
-                        {project.name}
+                        {t(project.nameKey)}
                       </h3>
                       <div className="flex gap-2">
                         {project.github !== "#" && (
@@ -114,7 +117,7 @@ export default function ProjectsPage() {
                     </div>
 
                     <p className="text-foreground-muted mb-6 leading-relaxed">
-                      {project.description}
+                      {t(project.descKey)}
                     </p>
 
                     {/* Highlights */}
@@ -124,7 +127,7 @@ export default function ProjectsPage() {
                           key={highlight}
                           className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
                         >
-                          {highlight}
+                          {t(highlight)}
                         </span>
                       ))}
                     </div>
@@ -151,7 +154,7 @@ export default function ProjectsPage() {
       {/* Other Projects */}
       <section className="py-16 bg-background-alt">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-display font-bold mb-8 animate-fade-in-up">Other Projects</h2>
+          <h2 className="text-2xl font-display font-bold mb-8 animate-fade-in-up">{t("otherTitle")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
               <div
@@ -190,9 +193,9 @@ export default function ProjectsPage() {
                 </div>
 
                 <h3 className="text-lg font-display font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {project.name}
+                  {t(project.nameKey)}
                 </h3>
-                <p className="text-foreground-muted text-sm mb-4">{project.description}</p>
+                <p className="text-foreground-muted text-sm mb-4">{t(project.descKey)}</p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tech.slice(0, 4).map((tech) => (
@@ -214,7 +217,7 @@ export default function ProjectsPage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl font-display font-semibold mb-4 animate-fade-in-up">
-            想查看更多项目代码？
+            {t("ctaTitle")}
           </h3>
           <a
             href="https://github.com"
@@ -224,7 +227,7 @@ export default function ProjectsPage() {
             style={{ animationDelay: "0.1s" }}
           >
             <Link2 className="w-5 h-5" />
-            访问 GitHub
+            {t("viewGithub")}
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
