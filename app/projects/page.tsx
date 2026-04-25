@@ -220,7 +220,7 @@ export default async function ProjectsPage() {
             {t("ctaTitle")}
           </h3>
           <a
-            href="https://github.com"
+            href="https://github.com/CoderXuRui"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors animate-fade-in-up"
