@@ -167,9 +167,12 @@ export default async function Home() {
           </div>
 
           <div className="space-y-8 max-w-3xl mx-auto">
-            {[
-              { company: "阿里国际电商支付部门", role: "后端开发工程师", period: "2025.04 - 2025.09", desc: "负责Miravia支付链路架构升级与稳定性治理和Lazada支付链路AIOps与智能诊断Agent平台开发" },
-            ].map((item, index) => (
+            {[{
+              company: t("experienceCompany1"),
+              role: t("experienceRole1"),
+              period: t("experiencePeriod1"),
+              desc: t("experienceDesc1"),
+            }].map((item, index) => (
               <div key={index} className="flex gap-6 animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
                 <div className="flex flex-col items-center">
                   <div className="w-4 h-4 rounded-full bg-primary" />
@@ -215,10 +218,15 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              { name: "分布式任务调度系统", tech: "Java / Redis / Kafka", desc: "支持高并发、分布式的任务调度平台" },
-              { name: "微服务电商系统", tech: "Spring Cloud / MySQL / Docker", desc: "完整的电商后端解决方案" },
-            ].map((project, index) => (
+            {[{
+              name: t("project1Name"),
+              tech: t("project1Tech"),
+              desc: t("project1Desc"),
+            }, {
+              name: t("project2Name"),
+              tech: t("project2Tech"),
+              desc: t("project2Desc"),
+            }].map((project, index) => (
               <div
                 key={index}
                 className="group bg-card rounded-xl p-6 shadow-sm border border-border hover:border-primary hover:shadow-lg transition-all animate-fade-in-up"

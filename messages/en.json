@@ -48,7 +48,17 @@
     "ctaTitle": "Ready to collaborate?",
     "ctaDesc": "Whether it's project collaboration or tech exchange, I look forward to connecting with you",
     "contactMe": "Contact Me",
-    "readBlog": "Read Blog"
+    "readBlog": "Read Blog",
+    "experienceCompany1": "Alibaba International - E-commerce Payment",
+    "experienceRole1": "Backend Engineer",
+    "experiencePeriod1": "Apr 2025 - Sep 2025",
+    "experienceDesc1": "Responsible for Miravia payment architecture upgrade and stability governance, and Lazada payment AIOps and intelligent diagnosis Agent platform development",
+    "project1Name": "Distributed Task Scheduler",
+    "project1Tech": "Java / Redis / Kafka",
+    "project1Desc": "High-performance task scheduling platform supporting distributed deployment and retry mechanisms",
+    "project2Name": "Microservices E-commerce",
+    "project2Tech": "Spring Cloud / MySQL / Docker",
+    "project2Desc": "Complete e-commerce backend solution with microservices architecture"
   },
   "AboutPage": {
     "title": "About",

@@ -48,7 +48,17 @@
     "ctaTitle": "准备好了开始合作？",
     "ctaDesc": "无论是项目合作还是技术交流，我都非常期待与您联系",
     "contactMe": "联系我",
-    "readBlog": "阅读博客"
+    "readBlog": "阅读博客",
+    "experienceCompany1": "阿里国际电商支付部门",
+    "experienceRole1": "后端开发工程师",
+    "experiencePeriod1": "2025.04 - 2025.09",
+    "experienceDesc1": "负责Miravia支付链路架构升级与稳定性治理和Lazada支付链路AIOps与智能诊断Agent平台开发",
+    "project1Name": "分布式任务调度系统",
+    "project1Tech": "Java / Redis / Kafka",
+    "project1Desc": "支持高并发、分布式的任务调度平台",
+    "project2Name": "微服务电商系统",
+    "project2Tech": "Spring Cloud / MySQL / Docker",
+    "project2Desc": "完整的电商后端解决方案"
   },
   "AboutPage": {
     "title": "关于",
